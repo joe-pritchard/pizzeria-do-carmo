@@ -1,4 +1,5 @@
 import Hero from '~/components/Hero.vue'
+import Testimonials from '~/components/Testimonials.vue'
 
 export const registeredComponents = [
     {
@@ -17,6 +18,38 @@ export const registeredComponents = [
             {
                 name: 'subheadline',
                 type: 'string',
+            },
+        ],
+    },
+    {
+        component: Testimonials,
+        name: 'testimonials',
+        inputs: [
+            {
+                type: 'list',
+                name: 'testimonials',
+                subFields: [
+                    {
+                        name: 'rating',
+                        type: 'number',
+                        enum: [1, 2, 3, 4, 5],
+                        helperText: 'A star rating for the review',
+                    },
+                    {
+                        name: 'quote',
+                        type: 'longText',
+                    },
+                    {
+                        name: 'name',
+                        type: 'string',
+                        helperText: 'The name of the person who gave the review',
+                    },
+                    {
+                        name: 'location',
+                        type: 'string',
+                        helperText: "The reviewer's location or any other subtitle shown below their name",
+                    },
+                ],
             },
         ],
     },
