@@ -26,12 +26,18 @@ dependencies:
   '@headlessui/vue':
     specifier: ^1.7.19
     version: 1.7.19(vue@3.4.19)
+  '@tailwindcss/forms':
+    specifier: ^0.5.7
+    version: 0.5.7(tailwindcss@3.4.1)
   '@vueuse/core':
     specifier: ^10.8.0
     version: 10.8.0(vue@3.4.19)
   autoprefixer:
     specifier: ^10.4.17
     version: 10.4.17(postcss@8.4.35)
+  dompurify:
+    specifier: ^3.0.9
+    version: 3.0.9
   nuxt:
     specifier: ^3.10.3
     version: 3.10.3(eslint@8.56.0)(typescript@5.3.3)(vite@5.1.4)
@@ -52,6 +58,9 @@ devDependencies:
   '@nuxt/eslint-config':
     specifier: ^0.2.0
     version: 0.2.0(eslint@8.56.0)
+  '@types/dompurify':
+    specifier: ^3.0.5
+    version: 3.0.5
   '@typescript-eslint/eslint-plugin':
     specifier: ^7.0.2
     version: 7.0.2(@typescript-eslint/parser@7.0.2)(eslint@8.56.0)(typescript@5.3.3)
@@ -1881,6 +1890,15 @@ packages:
     engines: {node: '>=18'}
     dev: false
 
+  /@tailwindcss/forms@0.5.7(tailwindcss@3.4.1):
+    resolution: {integrity: sha512-QE7X69iQI+ZXwldE+rzasvbJiyV/ju1FGHH0Qn2W3FKbuYtqp8LKcy6iSw79fVUT5/Vvf+0XgLCeYVG+UV6hOw==}
+    peerDependencies:
+      tailwindcss: '>=3.0.0 || >= 3.0.0-alpha.1'
+    dependencies:
+      mini-svg-data-uri: 1.4.4
+      tailwindcss: 3.4.1
+    dev: false
+
   /@tanstack/virtual-core@3.1.2:
     resolution: {integrity: sha512-DATZJs8iejkIUqXZe6ruDAnjFo78BKnIIgqQZrc7CmEFqfLEN/TPD91n4hRfo6hpRB6xC00bwKxv7vdjFNEmOg==}
     dev: false
@@ -1912,6 +1930,12 @@ packages:
       minimatch: 9.0.3
     dev: false
 
+  /@types/dompurify@3.0.5:
+    resolution: {integrity: sha512-1Wg0g3BtQF7sSb27fJQAKck1HECM6zV1EB66j8JH9i3LCjYabJa0FSdiSgsD5K/RbrsR0SiraKacLB+T8ZVYAg==}
+    dependencies:
+      '@types/trusted-types': 2.0.7
+    dev: true
+
   /@types/estree@1.0.5:
     resolution: {integrity: sha512-/kYRxGDLWzHOB7q+wtSUQlFrtcdUccpfy+X+9iMBpHK8QLLhx2wIPYuS5DYtR9Wa/YlZAbIovy7qVdB1Aq6Lyw==}
     dev: false
@@ -1938,6 +1962,10 @@ packages:
 
   /@types/semver@7.5.7:
     resolution: {integrity: sha512-/wdoPq1QqkSj9/QOeKkFquEuPzQbHTWAMPH/PaUMB+JuR31lXhlWXRZ52IpfDYVlDOUBvX09uBrPwxGT1hjNBg==}
+    dev: true
+
+  /@types/trusted-types@2.0.7:
+    resolution: {integrity: sha512-ScaPdn1dQczgbl0QFTeTOmVHFULt394XJgOQNoyVhZ6r2vLnMLJfBPd53SB52T/3G36VI1/g2MZaX0cwDuXsfw==}
     dev: true
 
   /@types/web-bluetooth@0.0.20:
@@ -3316,6 +3344,10 @@ packages:
       domelementtype: 2.3.0
     dev: false
 
+  /dompurify@3.0.9:
+    resolution: {integrity: sha512-uyb4NDIvQ3hRn6NiC+SIFaP4mJ/MdXlvtunaqK9Bn6dD3RuB/1S/gasEjDHD8eiaqdSael2vBv+hOs7Y+jhYOQ==}
+    dev: false
+
   /domutils@3.1.0:
     resolution: {integrity: sha512-H78uMmQtI2AhgDJjWeQmHwJJ2bLPD3GMmO7Zja/ZZh84wkm+4ut+IUnUdRa8uCGX88DiVx1j6FRe1XfxEgjEZA==}
     dependencies:
@@ -4654,6 +4686,11 @@ packages:
   /mimic-response@3.1.0:
     resolution: {integrity: sha512-z0yWI+4FDrrweS8Zmt4Ej5HdJmky15+L2e6Wgn3+iK5fWzb6T3fhNFq2+MeTRb064c6Wr4N/wv0DzQTjNzHNGQ==}
     engines: {node: '>=10'}
+    dev: false
+
+  /mini-svg-data-uri@1.4.4:
+    resolution: {integrity: sha512-r9deDe9p5FJUPZAk3A59wGH7Ii9YrjjWw0jmw/liSbHl2CHiyXj6FcDXDu2K3TjVAXqiJdaw3xxwlZZr9E6nHg==}
+    hasBin: true
     dev: false
 
   /minimatch@3.1.2:

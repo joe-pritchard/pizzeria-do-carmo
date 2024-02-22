@@ -1,5 +1,6 @@
 import Hero from '~/components/Hero.vue'
 import Testimonials from '~/components/Testimonials.vue'
+import ContactSection from '~/components/ContactSection.vue'
 
 export const registeredComponents = [
     {
@@ -50,6 +51,29 @@ export const registeredComponents = [
                         helperText: "The reviewer's location or any other subtitle shown below their name",
                     },
                 ],
+            },
+        ],
+    },
+    {
+        component: ContactSection,
+        name: 'Contact section',
+        inputs: [
+            {
+                name: 'content',
+                type: 'longText',
+                helpText: 'The blurb for the contact form',
+            },
+            {
+                name: 'address',
+                type: 'richText',
+            },
+            {
+                name: 'phoneNumber',
+                type: 'text',
+            },
+            {
+                name: 'email',
+                type: 'email',
             },
         ],
     },
