@@ -1,6 +1,5 @@
 <template>
     <NuxtLayout>
-        <MainNav />
         <Content
             v-if="content || isPreviewing()"
             model="page"
@@ -8,7 +7,6 @@
             :custom-components="registeredComponents"
             :api-key="builderApiKey"
         />
-        <!--        :custom-components="REGISTERED_COMPONENTS"-->
         <div v-else>Content not Found</div>
     </NuxtLayout>
 </template>
@@ -30,6 +28,13 @@ const { data: content } = await useAsyncData('builderData', () =>
         },
     }),
 )
+
+const siteConfig = useSiteConfig()
+console.log(siteConfig.value?.logo)
+useHead({
+    title: `${siteConfig.value?.company}`,
+    link: [{ rel: 'icon', type: 'image/png', href: siteConfig.value?.logo }],
+})
 </script>
 
 <style scoped></style>

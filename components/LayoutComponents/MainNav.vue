@@ -9,32 +9,37 @@
             <div class="flex h-16 justify-between">
                 <div class="flex">
                     <div class="flex flex-shrink-0 items-center">
-                        <img
-                            class="h-8 w-auto"
-                            src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600"
-                            alt="Your Company"
-                        />
+                        <img class="h-8 w-auto" :src="siteConfig.logo" :alt="siteConfig.company" />
                     </div>
                     <div class="hidden sm:ml-6 sm:flex sm:space-x-8">
                         <!-- Current: "border-indigo-500 text-gray-900", Default: "border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700" -->
                         <a
                             href="#menu"
-                            class="inline-flex items-center border-b-2 border-transparent px-1 pt-1 text-sm font-medium text-gray-500 hover:border-gray-300 hover:text-gray-700"
-                            :class="{ 'text-white hover:border-gray-100 hover:text-gray-300': isTopOfPage }"
+                            class="inline-flex items-center border-b-2 border-transparent px-1 pt-1 text-sm font-medium"
+                            :class="{
+                                'text-white hover:border-gray-100 hover:text-gray-300': isTopOfPage,
+                                'text-gray-500 hover:border-gray-300 hover:text-gray-700': !isTopOfPage,
+                            }"
                         >
                             Our Menu
                         </a>
                         <button
-                            class="inline-flex items-center border-b-2 border-transparent px-1 pt-1 text-sm font-medium text-gray-500 hover:border-gray-300 hover:text-gray-700"
-                            :class="{ 'text-white hover:border-gray-100 hover:text-gray-300': isTopOfPage }"
+                            class="inline-flex items-center border-b-2 border-transparent px-1 pt-1 text-sm font-medium"
+                            :class="{
+                                'text-white hover:border-gray-100 hover:text-gray-300': isTopOfPage,
+                                'text-gray-500 hover:border-gray-300 hover:text-gray-700': !isTopOfPage,
+                            }"
                             @click="isBookingModalOpen = true"
                         >
                             Book a Table
                         </button>
                         <a
                             href="#contact"
-                            class="inline-flex items-center border-b-2 border-transparent px-1 pt-1 text-sm font-medium text-gray-500 hover:border-gray-300 hover:text-gray-700"
-                            :class="{ 'text-white hover:border-gray-100 hover:text-gray-300': isTopOfPage }"
+                            class="inline-flex items-center border-b-2 border-transparent px-1 pt-1 text-sm font-medium"
+                            :class="{
+                                'text-white hover:border-gray-100 hover:text-gray-300': isTopOfPage,
+                                'text-gray-500 hover:border-gray-300 hover:text-gray-700': !isTopOfPage,
+                            }"
                         >
                             Contact Us
                         </a>
@@ -94,6 +99,7 @@ import { faBars } from '@fortawesome/free-solid-svg-icons/faBars'
 import { faTimes } from '@fortawesome/free-solid-svg-icons/faTimes'
 import BookingModal from '~/components/BookingModal.vue'
 
+const siteConfig = useSiteConfig()
 const { y } = useWindowScroll()
 const isTopOfPage = computed(() => y.value < 100)
 
