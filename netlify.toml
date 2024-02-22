@@ -1,5 +1,5 @@
 # The following redirect is intended for use with most SPAs that handle routing internally.
 [[redirects]]
   from = "/*"
-  to = "/.output/public/index.html"
+  to = "/.dist/index.html"
   status = 200
