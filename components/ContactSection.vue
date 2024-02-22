@@ -66,7 +66,13 @@
                     </dl>
                 </div>
             </div>
-            <form netlify name="contact" method="POST" class="px-6 pb-24 pt-20 sm:pb-32 lg:px-8 lg:py-48">
+            <form
+                netlify
+                name="contact"
+                method="POST"
+                class="px-6 pb-24 pt-20 sm:pb-32 lg:px-8 lg:py-48"
+                @submit.prevent="onSubmit"
+            >
                 <div class="mx-auto max-w-xl lg:mr-0 lg:max-w-lg">
                     <div class="grid grid-cols-1 gap-x-8 gap-y-6 sm:grid-cols-2">
                         <div>
@@ -141,6 +147,8 @@
                         <button
                             type="submit"
                             class="rounded-md bg-yellow-500 px-3.5 py-2.5 text-center text-sm font-semibold text-white shadow-sm hover:bg-yellow-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-yellow-500"
+                            :class="{ 'opacity-50 cursor-not-allowed': isSubmitting }"
+                            :disabled="isSubmitting"
                         >
                             Send message
                         </button>
@@ -180,4 +188,21 @@ const sanitizedAddress = ref('')
 import('dompurify').then(({ default: DOMPurify }) => {
     sanitizedAddress.value = DOMPurify.sanitize(props.address)
 })
+
+const isSubmitting = ref(false)
+const onSubmit = event => {
+    const theForm = event.target
+
+    if (theForm !== null) {
+        const formData = new FormData(theForm)
+        isSubmitting.value = true
+        fetch('/', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+            body: new URLSearchParams(formData).toString(),
+        })
+            .catch(error => console.error(error))
+            .finally(() => (isSubmitting.value = false))
+    }
+}
 </script>
