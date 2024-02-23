@@ -68,6 +68,7 @@
             </div>
             <form
                 netlify
+                netlify-honeypot="bot-field"
                 name="contact"
                 method="POST"
                 action="/"
@@ -77,6 +78,10 @@
                 <div class="mx-auto max-w-xl lg:mr-0 lg:max-w-lg">
                     <div class="grid grid-cols-1 gap-x-8 gap-y-6 sm:grid-cols-2">
                         <div>
+                            <p class="hidden">
+                                <label> Don't fill this out if you’re human: <input name="bot-field" /> </label>
+                            </p>
+
                             <label for="first-name" class="block text-sm font-semibold leading-6 text-white"
                                 >First name</label
                             >
