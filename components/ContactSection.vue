@@ -144,15 +144,20 @@
                             </div>
                         </div>
                     </div>
-                    <div class="mt-8 flex justify-end">
+                    <div class="mt-8 flex justify-end items-center flex-row-reverse">
                         <button
                             type="submit"
-                            class="rounded-md bg-yellow-500 px-3.5 py-2.5 text-center text-sm font-semibold text-white shadow-sm hover:bg-yellow-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-yellow-500"
-                            :class="{ 'opacity-50 cursor-not-allowed': isSubmitting }"
+                            class="relative rounded-md bg-yellow-500 px-3.5 py-2.5 text-center text-sm font-semibold text-white shadow-sm hover:bg-yellow-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-yellow-500"
+                            :class="{ 'cursor-not-allowed': isSubmitting }"
                             :disabled="isSubmitting"
                         >
-                            Send message
+                            <span :class="{ 'opacity-0': isSubmitting }">Send message</span>
+                            <span v-if="isSubmitting" class="absolute inset-0 flex items-center justify-center">
+                                <FontAwesomeIcon :icon="faSpinner" class="fa-spin" />
+                            </span>
                         </button>
+
+                        <p v-if="success" class="text-white mr-4">Thanks, we'll get back to you soon!</p>
                     </div>
                 </div>
             </form>
@@ -165,6 +170,7 @@ import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import { faShop } from '@fortawesome/free-solid-svg-icons/faShop'
 import { faPhone } from '@fortawesome/free-solid-svg-icons/faPhone'
 import { faEnvelope } from '@fortawesome/free-solid-svg-icons/faEnvelope'
+import { faSpinner } from '@fortawesome/free-solid-svg-icons/faSpinner'
 
 const props = defineProps({
     content: {
@@ -191,6 +197,7 @@ import('dompurify').then(({ default: DOMPurify }) => {
 })
 
 const isSubmitting = ref(false)
+const success = ref(false)
 const onSubmit = event => {
     const theForm = event.target
 
@@ -204,6 +211,11 @@ const onSubmit = event => {
             headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
             body: new URLSearchParams(formData).toString(),
         })
+            .then(() => {
+                success.value = true
+                theForm.reset()
+                setTimeout(() => (success.value = false), 10000)
+            })
             .catch(error => console.error(error))
             .finally(() => (isSubmitting.value = false))
     }
