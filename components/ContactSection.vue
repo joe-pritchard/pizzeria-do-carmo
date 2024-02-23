@@ -70,6 +70,7 @@
                 netlify
                 name="contact"
                 method="POST"
+                action="/"
                 class="px-6 pb-24 pt-20 sm:pb-32 lg:px-8 lg:py-48"
                 @submit.prevent="onSubmit"
             >
@@ -195,8 +196,10 @@ const onSubmit = event => {
 
     if (theForm !== null) {
         const formData = new FormData(theForm)
+        formData.set('form-name', theForm.name)
+
         isSubmitting.value = true
-        fetch('/', {
+        fetch(theForm.action, {
             method: 'POST',
             headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
             body: new URLSearchParams(formData).toString(),
