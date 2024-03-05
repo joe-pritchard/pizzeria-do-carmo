@@ -60,7 +60,7 @@
                                 <FontAwesomeIcon :icon="faEnvelope" class="h-7 w-6 text-gray-400" aria-hidden="true" />
                             </dt>
                             <dd>
-                                <a class="hover:text-white" :href="`mailto:${email}`">{{ email }}</a>
+                                <a class="hover:text-white" :href="`mailto:${email}`" target="_blank">{{ email }}</a>
                             </dd>
                         </div>
                     </dl>
