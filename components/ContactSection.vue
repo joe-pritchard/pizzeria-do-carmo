@@ -38,14 +38,14 @@
                         {{ content }}
                     </p>
                     <dl class="mt-10 space-y-4 text-base leading-7 text-gray-300">
-                        <div class="flex gap-x-4">
+                        <div v-if="sanitizedAddress" class="flex gap-x-4">
                             <dt class="flex-none">
                                 <span class="sr-only">Address</span>
                                 <FontAwesomeIcon :icon="faShop" class="h-7 w-6 text-gray-400" aria-hidden="true" />
                             </dt>
                             <dd v-html="sanitizedAddress" />
                         </div>
-                        <div class="flex gap-x-4">
+                        <div v-if="phoneNumber" class="flex gap-x-4">
                             <dt class="flex-none">
                                 <span class="sr-only">Telephone</span>
                                 <FontAwesomeIcon :icon="faPhone" class="h-7 w-6 text-gray-400" aria-hidden="true" />
@@ -54,7 +54,7 @@
                                 <a class="hover:text-white" :href="`tel:${phoneNumber}`">{{ phoneNumber }}</a>
                             </dd>
                         </div>
-                        <div class="flex gap-x-4">
+                        <div v-if="email" class="flex gap-x-4">
                             <dt class="flex-none">
                                 <span class="sr-only">Email</span>
                                 <FontAwesomeIcon :icon="faEnvelope" class="h-7 w-6 text-gray-400" aria-hidden="true" />
