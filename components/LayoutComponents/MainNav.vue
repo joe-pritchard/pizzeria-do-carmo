@@ -14,6 +14,7 @@
                     <div class="hidden sm:ml-6 sm:flex sm:space-x-8">
                         <!-- Current: "border-yellow-500 text-gray-900", Default: "border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700" -->
                         <a
+                            v-if="siteConfig.menuLink"
                             :href="siteConfig.menuLink"
                             target="_blank"
                             class="inline-flex items-center border-b-2 border-transparent px-1 pt-1 text-sm font-medium"
@@ -65,6 +66,7 @@
             <div class="space-y-1 pb-3 pt-2">
                 <!-- Current: "bg-yellow-50 border-yellow-500 text-yellow-700", Default: "border-transparent text-gray-500 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-700" -->
                 <DisclosureButton
+                    v-if="siteConfig.menuLink"
                     as="a"
                     href="#menu"
                     class="block border-l-4 border-transparent py-2 pl-3 pr-4 text-base font-medium text-gray-500 hover:border-gray-300 hover:bg-gray-50 hover:text-gray-700"

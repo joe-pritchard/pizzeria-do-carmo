@@ -18,7 +18,12 @@
                     >
                         Book a table
                     </button>
-                    <a :href="siteConfig.menuLink" target="_blank" class="text-sm font-semibold leading-6 text-white">
+                    <a
+                        v-if="siteConfig.menuLink"
+                        :href="siteConfig.menuLink"
+                        target="_blank"
+                        class="text-sm font-semibold leading-6 text-white"
+                    >
                         View the menu <span aria-hidden="true">→</span>
                     </a>
                 </div>
